@@ -8,6 +8,8 @@ let connection: typeof mongoose;
  * Call this function before all api routes
  * @returns {Promise<typeof mongoose>}
  */
+
+/*
 const connectDB = async () => {
   if (!connection) {
     // uncomment this line once you have the MONGO_URI set up
@@ -18,3 +20,5 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+
+*/
