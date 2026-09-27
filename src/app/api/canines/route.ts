@@ -1,39 +1,38 @@
-import { Canine, test_canines } from "@/types/PetType"
-/** 
+import { Canine, test_canines } from "@/types/PetType";
+/**
  * GET /api/canines
  * @returns all canines from test_canines found in types/PetTypes
-*/
+ */
 export async function GET() {
-    return Response.json(test_canines, {status: 200});
+  return Response.json(test_canines, { status: 200 });
 }
 
-/** 
+/**
  * POST /api/canines
  * Accepts a new canine and adds it to test_canines in types/PetTypes
-*/
-export async function POST(request: Request){
-    const newCanine: Canine = (await request.json());
+ */
+export async function POST(request: Request) {
+  const newCanine: Canine = await request.json();
 
-    if(!newCanine.Image || !newCanine.Name || !newCanine.Breed 
-       || !["Baby", "Young", "Adult", "Senior"].includes(newCanine.Age) 
-       || !["Male", "Female"].includes(newCanine.Sex)){
-        return Response.json(
-            {error: "Invalid canine data"},
-            {status: 400})
-    }
+  if (
+    !newCanine.Image ||
+    !newCanine.Name ||
+    !newCanine.Breed ||
+    !["Baby", "Young", "Adult", "Senior"].includes(newCanine.Age) ||
+    !["Male", "Female"].includes(newCanine.Sex)
+  ) {
+    return Response.json({ error: "Invalid canine data" }, { status: 400 });
+  }
 
-    test_canines.push(newCanine);
+  test_canines.push(newCanine);
 
-    return Response.json(
-        { message: "Canine added"},
-        {status: 201}
-    );
+  return Response.json({ message: "Canine added" }, { status: 201 });
 }
 
-/** 
+/**
  * DELETE /api/canines?name=Name
  * Removes a canine from test_canines by name or ID
-*/
+ */
 export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url);
   const name = searchParams.get("name");
@@ -50,16 +49,10 @@ export async function DELETE(request: Request) {
   );
 
   if (index === -1) {
-    return Response.json(
-      { error: "Canine not found" },
-      { status: 404 },
-    );
+    return Response.json({ error: "Canine not found" }, { status: 404 });
   }
 
   const [deletedCanine] = test_canines.splice(index, 1);
 
-  return Response.json(
-    {message: "Canine deleted"},
-    {status: 200},
-  );
+  return Response.json({ message: "Canine deleted" }, { status: 200 });
 }
