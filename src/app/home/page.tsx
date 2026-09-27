@@ -17,6 +17,9 @@ export default function home() {
           <li>
             <a href="/contact">Contact</a>
           </li>
+          <li>
+            <a href="/canines">Canines</a>
+          </li>
         </ul>
       </nav>
 
