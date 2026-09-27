@@ -15,8 +15,8 @@ export async function POST(request: Request){
     const newCanine: Canine = (await request.json());
 
     if(!newCanine.Image || !newCanine.Name || !newCanine.Breed 
-       || ["Baby", "Young", "Adult", "Senior"].includes(newCanine.Age) 
-       || !["Male, Female"].includes(newCanine.Sex)){
+       || !["Baby", "Young", "Adult", "Senior"].includes(newCanine.Age) 
+       || !["Male", "Female"].includes(newCanine.Sex)){
         return Response.json(
             {error: "Invalid canine data"},
             {status: 400})
@@ -25,7 +25,8 @@ export async function POST(request: Request){
     test_canines.push(newCanine);
 
     return Response.json(
-        { message: "Canine added", status: 201}
+        { message: "Canine added"},
+        {status: 201}
     );
 }
 
@@ -57,8 +58,8 @@ export async function DELETE(request: Request) {
 
   const [deletedCanine] = test_canines.splice(index, 1);
 
-  return Response.json({
-    message: "Canine deleted",
-    status: 200
-  });
+  return Response.json(
+    {message: "Canine deleted"},
+    {status: 200},
+  );
 }
