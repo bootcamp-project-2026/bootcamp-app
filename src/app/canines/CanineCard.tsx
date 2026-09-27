@@ -1,4 +1,5 @@
 import Image from "next/image";
+import styles from "./canines.module.css";
 
 export type Canine = {
   Image: string;
@@ -17,17 +18,20 @@ export default function CanineCard({ canine }: CanineCardProps) {
   const imageFileName = canine.Image.split("/").pop();
 
   return (
-    <article className="card">
+    <article className={styles.card}>
       <Image
+        className={styles.image}
         src={`/pets/${imageFileName}`}
         alt={canine.Name}
         width={300}
         height={200}
       />
-      <h2>{canine.Name}</h2>
-      <p>Breed: {canine.Breed}</p>
-      <p>Age: {canine.Age}</p>
-      <p>Sex: {canine.Sex}</p>
+      <div className={styles.details}>
+        <h2>{canine.Name}</h2>
+        <p>Breed: {canine.Breed}</p>
+        <p>Age: {canine.Age}</p>
+        <p>Sex: {canine.Sex}</p>
+      </div>
     </article>
   );
 }
