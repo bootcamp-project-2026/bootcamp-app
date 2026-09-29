@@ -1,7 +1,8 @@
 .page {
   --white: #fafafa;
   --black: #000;
-  --title: #1a196e;
+  --title: #3663cd;
+  --highlight: #5085f0;
   --grey: #666;
   --lightgrey: #cfcfcf;
 
@@ -36,7 +37,123 @@
   width: 120vh;
   height: 70vh;
   background-color: var(--white);
-  border: 2px solid #ccc;
+  border: 4px solid var(--highlight);
   border-radius: 15px;
   padding: 20px;
+  overflow: auto;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: min(1000px, 100%);
+  min-height: 176px;
+  margin: 20px auto;
+  padding: 14px;
+  border: 3px solid var(--white);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px var(--title);
+  color: #111827;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--title);
+  box-shadow: 0 12px 24px var(--highlight);
+}
+
+.image {
+  width: 148px;
+  height: 148px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.details {
+  flex: 1;
+  text-align: left;
+}
+
+.details h2 {
+  color: var(--highlight);
+  font-size: 20;
+  text-align: left;
+}
+
+.title {
+  color: var(--highlight);
+  -webkit-text-stroke: 2px var(--title);
+  font-size: 60;
+  text-align: left;
+  font-weight: bold;
+
+  animation: wobble 5s linear infinite;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
+}
+
+.viewbutton {
+  display: inline-block;
+  padding: 12px 24px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  text-decoration: none;
+
+  background-color: var(--title);
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.viewbutton:hover {
+  background-color: var(--highlight);
+  transform: scale(1.05);
+}
+
+.viewbutton:active {
+  transform: scale(0.98);
+}
+
+.details p {
+  color: var(--grey);
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .image {
+    width: 100%;
+    height: 220px;
+  }
 }
