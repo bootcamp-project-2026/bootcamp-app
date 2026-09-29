@@ -1,0 +1,42 @@
+.page {
+  --white: #fafafa;
+  --black: #000;
+  --title: #1a196e;
+  --grey: #666;
+  --lightgrey: #cfcfcf;
+
+  min-height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--black);
+  background-color: var(--white);
+  background-image: url("/hex-light.svg");
+  background-repeat: repeat;
+  animation: hex-scroll 10s linear infinite;
+}
+
+@keyframes hex-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 98px;
+  }
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  width: 120vh;
+  height: 70vh;
+  background-color: var(--white);
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+}

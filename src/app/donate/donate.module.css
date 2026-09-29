@@ -21,6 +21,15 @@
   animation: hex-scroll 10s linear infinite;
 }
 
+@keyframes hex-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 98px;
+  }
+}
+
 .container {
   justify-content: center;
   align-items: center;
@@ -84,13 +93,4 @@
   border: none;
   border-radius: 5px;
   width: 70px;
-}
-
-@keyframes hex-scroll {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 56px 98px;
-  }
 }
