@@ -1,15 +1,17 @@
+import styles from "./Navbar.module.css";
+
 export default function Navbar() {
   return (
-    <nav className="navbar">
-      <ul className="nav-list">
-        <li>
-          <a href="/home">Home</a>
+    <nav className={styles.navbar}>
+      <ul className={styles.navList}>
+        <li className={styles.navItem}>
+          <a href="/home">HOME</a>
         </li>
-        <li>
-          <a href="/about">About</a>
+        <li className={styles.navItem}>
+          <a href="/about">ABOUT</a>
         </li>
-        <li>
-          <a href="/contact">Contact</a>
+        <li className={styles.navItem}>
+          <a href="/contact">CONTACT</a>
         </li>
       </ul>
     </nav>
