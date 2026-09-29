@@ -5,13 +5,18 @@ export default function Home() {
     <main>
       <section id="home-section" className={styles.home}>
         <h1 className={styles.titleContainer}>
-          <span className={styles.topHalf}>MEADE CANINE</span>
-          <span className={styles.bottomHalf}>Rescue & Sanctuary</span>
+          <span className={styles.titleTopHalf}>MEADE CANINE</span>
+          <span className={styles.titleBottomHalf}>Rescue & Sanctuary</span>
         </h1>
 
         {/* Hero section */}
         <section id="hero-subsection" className={styles.hero}>
-          <div className={styles.heroImage}>placeholder hero image</div>
+          <div className={styles.heroImage}>
+            <img
+              src="/homeimage.jpeg"
+              alt="A very cute and happy dog in an open grassy field."
+            />
+          </div>
           <div className={styles.heroText}>
             <h2 className={styles.heroTitle}>GIVING OLD DOGS NEW LIVES</h2>
             <p id="paragraph-1" className={styles.heroParagraph}>
