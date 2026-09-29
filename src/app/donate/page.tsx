@@ -17,13 +17,6 @@ export default function DonatePage() {
         </p>
         <div className={styles.card}>
           <Selector />
-          <input
-            type="text"
-            id="amount"
-            name="amount"
-            placeholder="Other"
-            className={styles.other}
-          />
         </div>
       </div>
     </main>
