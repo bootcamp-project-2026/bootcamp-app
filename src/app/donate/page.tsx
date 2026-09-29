@@ -1,7 +1,7 @@
 "use client";
 import { preload } from "react-dom";
 import styles from "./donate.module.css";
-import Selector from "./Selector";
+import Selector from "../../components/Selector";
 
 export default function DonatePage() {
   preload("/hex-light.svg", { as: "image" });

@@ -2,7 +2,7 @@
  Multiple choice selector for choosing amounts to donate
 */
 
-import styles from "./donate.module.css";
+import styles from "../app/donate/donate.module.css";
 import { useState } from "react";
 
 const amounts = ["$10.00", "$25.00", "$50.00", "$100.00"]; // the options for donation
