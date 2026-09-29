@@ -1,5 +1,7 @@
+"use client";
 import { preload } from "react-dom";
 import styles from "./donate.module.css";
+import Selector from "./Selector";
 
 export default function DonatePage() {
   preload("/hex-light.svg", { as: "image" });
@@ -14,10 +16,7 @@ export default function DonatePage() {
           supporting our rescues! We sincerely appreciate your generosity! :)
         </p>
         <div className={styles.card}>
-          <p className={styles.entry}>$10</p>
-          <p className={styles.entry}>$25</p>
-          <p className={styles.entry}>$50</p>
-          <p className={styles.entry}>$100</p>
+          <Selector />
           <input
             type="text"
             id="amount"

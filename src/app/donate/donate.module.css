@@ -66,22 +66,21 @@
 }
 
 .entry {
-  margin: 0;
-  font-size: 15;
+  display: block;
   margin: 0 0 6px;
+  font-size: 15px;
   color: var(--black);
   text-align: left;
 }
 
 .other {
-  margin: 0;
-  font-size: 15;
+  display: block;
   margin: 0 0 6px;
+  font-size: 15px;
   color: var(--black);
-  text-align: left;
-  display: flex;
   background-color: var(--lightgrey);
   padding: 2px;
+  border: none;
   border-radius: 5px;
 }
 
