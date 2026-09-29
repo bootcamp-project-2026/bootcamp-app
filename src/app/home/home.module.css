@@ -28,7 +28,7 @@ body {
   letter-spacing: 10;
 }
 
-/* Hero section: text will be on the image*/
+/* Hero section for desktop: text will be on the image*/
 .hero {
   /* making position relative keeps all the elements in hero inside this container*/
   position: relative;
@@ -74,6 +74,28 @@ body {
   font-family:
     "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* Hero Section for screens under 767px*/
+@media (max-width: 767px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroText {
+    position: static; /* Strips out the absolute overlay properties */
+    background: none;
+    width: 100%;
+    box-sizing: border-box;
+    color: rgba(70, 55, 55, 0.95);
+    padding: 1rem;
+  }
+
+  .heroTitle {
+    font-size: 100%;
+    color: cornflowerblue;
+  }
 }
 
 /* Dog grid section */
