@@ -76,28 +76,6 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-/* Hero Section for screens under 767px*/
-@media (max-width: 767px) {
-  .hero {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .heroText {
-    position: static; /* Strips out the absolute overlay properties */
-    background: none;
-    width: 100%;
-    box-sizing: border-box;
-    color: rgba(70, 55, 55, 0.95);
-    padding: 1rem;
-  }
-
-  .heroTitle {
-    font-size: 100%;
-    color: coral;
-  }
-}
-
 /* Dog grid section */
 .dogContainer {
   display: flex;
@@ -140,9 +118,36 @@ body {
   margin: 1rem;
 }
 .dogImage {
-  /* griselda does not work... idk i tried everything i'll try again at some point */
   object-fit: contain;
   /* without using calc on the width, it does 100% plus the margins on the side */
   width: calc(100% - 2rem);
   margin: 1rem;
+}
+
+/* Responsive css for screens under 767px*/
+@media (max-width: 767px) {
+  /* Hero section on phones and smaller screens */
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroText {
+    position: static; /* strips out the absolute overlay properties */
+    background: none;
+    width: 100%;
+    box-sizing: border-box;
+    color: rgba(70, 55, 55, 0.95);
+    padding: 1rem;
+  }
+
+  .heroTitle {
+    font-size: 100%;
+    color: coral;
+  }
+
+  /* dog section on phones or smaller screens */
+  .dogGrid {
+    flex-direction: column;
+  }
 }
