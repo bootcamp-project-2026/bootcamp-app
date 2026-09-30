@@ -40,31 +40,41 @@ export default function Home() {
         </section>
 
         {/* Dogs section */}
-        <section id="dog-subsection" className={styles.dogcontainer}>
+        <section id="dog-subsection" className={styles.dogContainer}>
+          <h2 className={styles.dogTitle}> Meet Some Pups!</h2>
+
           {/* For 2x2 grid of dogs */}
           <div className={styles.dogGrid}>
             {/* dog1 */}
             <div className={styles.dogCard}>
-              <div className={styles.dogImage}>image placeholder</div>
-              <p className={styles.dogName}>doggy</p>
+              <p className={styles.dogName}>Ziggy</p>
+              <div className={styles.dogImage}>
+                <img src="/pets/ziggy.jpg" alt="A dog named Ziggy." />
+              </div>
             </div>
 
             {/* dog2 */}
             <div className={styles.dogCard}>
-              <div className={styles.dogImage}>image placeholder</div>
-              <p className={styles.dogName}>doggy</p>
+              <p className={styles.dogName}>Griselda</p>
+              <div id="griseldaimg" className={styles.dogImage}>
+                <img src="/pets/griselda.jpg" alt="A dog named Griselda." />
+              </div>
             </div>
 
             {/* dog3 */}
             <div className={styles.dogCard}>
-              <div className={styles.dogImage}>image placeholder</div>
-              <p className={styles.dogName}>doggy</p>
+              <p className={styles.dogName}>Sweetpea</p>
+              <div className={styles.dogImage}>
+                <img src="/pets/sweetpea.jpg" alt="A dog named Sweetpea." />
+              </div>
             </div>
 
             {/* dog4 */}
             <div className={styles.dogCard}>
-              <div className={styles.dogImage}>image placeholder</div>
-              <p className={styles.dogName}>doggy</p>
+              <p className={styles.dogName}>Ace</p>
+              <div className={styles.dogImage}>
+                <img src="/pets/homeace.jpg" alt="A dog named Homeace." />
+              </div>
             </div>
           </div>
         </section>
