@@ -12,7 +12,7 @@ export default function about() {
         {/* Our story section */}
         <section id="our-story-subsection" className={styles.ourStory}>
           <div className={styles.ourStoryImage}>
-            placeholder our story image
+            <img src="/aboutimage.jpeg" alt="Charlotte Meade with many dogs" />
           </div>
           <div className={styles.heroText}>
             <h2 id="our-story-title" className={styles.ourStoryTitle}>
