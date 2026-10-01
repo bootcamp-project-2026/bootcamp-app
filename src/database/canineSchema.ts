@@ -1,8 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
-/*
 export type Canine = {
-  Image: File | string;
+  Image: string;
   Name: string;
   Breed: string;
   Age: "Baby" | "Young" | "Adult" | "Senior";
@@ -14,9 +13,8 @@ export type Canine = {
   Details: string[];
   Story: string;
 };
-*/
 
-const CanineSchema = new mongoose.Schema(
+const CanineSchema = new Schema<Canine>(
   {
     Image: {
       type: String,
@@ -37,20 +35,17 @@ const CanineSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      enum: ["Baby", "Young", "Adult", "Senior", "Unknown"],
-      default: "Unknown",
+      enum: ["Baby", "Young", "Adult", "Senior"],
     },
     Sex: {
       type: String,
       required: true,
       trim: true,
-      enum: ["Male", "Female", "Unknown"],
-      default: "Unknown",
+      enum: ["Male", "Female"],
     },
     Neutered: {
       type: Boolean,
       required: true,
-      trim: true,
     },
     Immunization: {
       type: String,
@@ -65,12 +60,10 @@ const CanineSchema = new mongoose.Schema(
     Weight: {
       type: Number,
       required: true,
-      trim: true,
     },
     Details: {
-      type: [String],
+      type: [{ type: String, trim: true }],
       required: true,
-      trim: true,
     },
     Story: {
       type: String,
@@ -81,4 +74,5 @@ const CanineSchema = new mongoose.Schema(
   { collection: "canine_list" },
 );
 
-export default mongoose.models.Canine || mongoose.model("Canine", CanineSchema);
+export default mongoose.models.Canine ||
+  mongoose.model<Canine>("Canine", CanineSchema, "canines");
