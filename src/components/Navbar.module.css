@@ -1,0 +1,25 @@
+.navbar {
+  /* background of navbar */
+  background-color: cornflowerblue;
+  padding: 1rem 1rem;
+}
+
+.navList {
+  /* Text of items in navList */
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  /* Alignment things */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.navItem a:hover {
+  /* When you hover over it */
+  color: coral;
+  text-decoration: underline;
+}
