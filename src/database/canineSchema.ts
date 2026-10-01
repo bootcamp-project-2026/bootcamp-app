@@ -71,7 +71,7 @@ const CanineSchema = new Schema<Canine>(
       trim: true,
     },
   },
-  { collection: "canine_list" },
+  { collection: "canines" },
 );
 
 export default mongoose.models.Canine ||
