@@ -1,24 +1,33 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 .page {
   --white: #fafafa;
   --black: #000;
   --title: #1a196e;
   --grey: #666;
   --lightgrey: #cfcfcf;
+  --gold: #ffc439;
 
-  min-height: 100vh;
-  padding: 24px;
+  min-height: 70dvh;
+  /*padding: 24px; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: "Quicksand", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: var(--black);
   background-color: var(--white);
   background-image: url("/hex-light.svg");
   background-repeat: repeat;
   animation: hex-scroll 10s linear infinite;
+
+  flex: 1 1 auto;
 }
 
 @keyframes hex-scroll {
@@ -34,17 +43,41 @@
   justify-content: center;
   align-items: center;
   aspect-ratio: 0.8;
-  height: 70vh;
+  height: 30vh;
   background-color: var(--white);
   border: 2px solid #ccc;
   border-radius: 15px;
   padding: 20px;
+  margin-bottom: 150px;
+
+  animation: wobble 10s linear infinite;
+  transition:
+    border-color 0.5s ease,
+    border-width 0.5s ease;
+}
+
+.container:hover {
+  border-color: cornflowerblue;
+  border-width: 4px;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
 }
 
 .card {
   justify-content: center;
   align-items: center;
-  height: 25vh;
+  height: 10vh;
   width: 60vh;
   background-color: var(--white);
   padding: 20px;
@@ -53,14 +86,14 @@
 }
 
 .divider {
-  background-color: var(--title);
+  background-color: cornflowerblue;
   margin: 0 0 6px;
   height: 3px;
   border: none;
 }
 
 .title {
-  color: var(--title);
+  color: cornflowerblue;
   margin: 0 0 6px;
   font-size: 22;
   font-weight: bold;
@@ -93,4 +126,30 @@
   border: none;
   border-radius: 5px;
   width: 70px;
+}
+
+.donateButton {
+  display: inline-block;
+  margin: 0px 0;
+  padding: 5px 15px;
+  position: center;
+  vertical-align: middle;
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.donateButton:hover {
+  filter: brightness(0.95);
+  transform: scale(1.02);
+}
+
+.donateButton:active {
+  transform: scale(0.98);
 }
