@@ -75,4 +75,4 @@ const CanineSchema = new Schema<Canine>(
 );
 
 export default mongoose.models.Canine ||
-  mongoose.model<Canine>("Canine", CanineSchema, "canines");
+  mongoose.model<Canine>("CanineSchema", CanineSchema, "canines");
