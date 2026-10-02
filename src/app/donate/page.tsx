@@ -1,7 +1,7 @@
 "use client";
 import { preload } from "react-dom";
 import styles from "./donate.module.css";
-import Selector from "../../components/Selector";
+import DonateButton from "../../components/DonateButton";
 
 export default function DonatePage() {
   preload("/hex-light.svg", { as: "image" });
@@ -16,7 +16,7 @@ export default function DonatePage() {
           supporting our rescues! We sincerely appreciate your generosity! :)
         </p>
         <div className={styles.card}>
-          <Selector />
+          <DonateButton />
         </div>
       </div>
     </main>
