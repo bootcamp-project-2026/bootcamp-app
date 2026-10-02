@@ -2,7 +2,7 @@ import styles from "./about.module.css";
 
 export default function about() {
   return (
-    <main>
+    <main className={styles.page}>
       <section id="about-section" className={styles.about}>
         {/* Page title */}
         <h1 id="about-title" className={styles.aboutTitle}>

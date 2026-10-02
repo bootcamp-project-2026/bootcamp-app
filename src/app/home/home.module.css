@@ -1,5 +1,22 @@
 body {
   background: white;
+  padding-top: 60px;
+}
+
+.page {
+  background-color: var(--white);
+  background-image: url("/hex-light.svg");
+  background-repeat: repeat;
+  animation: hex-scroll 20s linear infinite;
+}
+
+@keyframes hex-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 98px;
+  }
 }
 
 /* The title */
@@ -13,6 +30,21 @@ body {
   line-height: 1;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: 1rem;
+
+  animation: wobble 10s linear infinite;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
 }
 
 .titleTopHalf {
@@ -55,11 +87,15 @@ body {
   background: rgba(70, 55, 55, 0.5);
   overflow-y: auto;
 
+  color: white;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   padding: 2rem;
+
+  transition: transform 0.3s ease-in-out;
 }
 
 .heroTitle {
