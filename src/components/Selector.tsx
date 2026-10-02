@@ -3,50 +3,21 @@
 */
 
 import styles from "../app/donate/donate.module.css";
-import { useState } from "react";
 
-const amounts = ["$10.00", "$25.00", "$50.00", "$100.00"]; // the options for donation
+const DONATE_URL =
+  "https://www.paypal.com/donate?token=CXg6UHV177pOZOamyXYUq4R93zRAO8HQmeVZsOP6XuAlM2e2h3dI-rzQ5Le58kR_oArAHl5gGvkGWz7l";
 
 export default function Selector() {
-  const [selected, setSelected] = useState<string | null>(null); // holds the selected value
-  const [other, setOther] = useState(""); // holds the typed custom amount
-
-  const donation = selected === "Other" ? other : selected; // actual amount
-
   return (
     <div>
-      {amounts.map((amount) => (
-        <label key={amount} className={styles.entry}>
-          <input
-            type="radio"
-            name="choice"
-            checked={selected === amount}
-            onChange={() => setSelected(amount)}
-          />
-          {amount}
-        </label>
-      ))}
-
-      <label className={styles.entry}>
-        <input
-          type="radio"
-          name="choice"
-          checked={selected === "Other"}
-          onChange={() => setSelected("Other")}
-        />
-        <span className={styles.otherWrap}>
-          $
-          <input
-            type="number"
-            min="1"
-            placeholder="Other"
-            className={styles.other}
-            value={other}
-            onFocus={() => setSelected("Other")}
-            onChange={(e) => setOther(e.target.value)}
-          />
-        </span>
-      </label>
+      <a
+        href={DONATE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.donateButton}
+      >
+        Donate with PayPal
+      </a>
     </div>
   );
 }
