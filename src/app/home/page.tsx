@@ -2,7 +2,7 @@ import styles from "./home.module.css";
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.page}>
       <section id="home-section" className={styles.home}>
         <h1 className={styles.titleContainer}>
           <span className={styles.titleTopHalf}>MEADE CANINE</span>
