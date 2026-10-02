@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CanineCard, { type Canine } from "./CanineCard";
+import CanineCard, { type Canine } from "@/src/components/CanineCard";
 
 /**
  * canine display page.
