@@ -1,4 +1,6 @@
 import { Canine, test_canines } from "@/types/PetType";
+import { validateCanine } from "@/src/lib/canineValidation";
+
 /**
  * GET /api/canines
  * @returns all canines from test_canines found in types/PetTypes
@@ -14,14 +16,9 @@ export async function GET() {
 export async function POST(request: Request) {
   const newCanine: Canine = await request.json();
 
-  if (
-    !newCanine.Image ||
-    !newCanine.Name ||
-    !newCanine.Breed ||
-    !["Baby", "Young", "Adult", "Senior"].includes(newCanine.Age) ||
-    !["Male", "Female"].includes(newCanine.Sex)
-  ) {
-    return Response.json({ error: "Invalid canine data" }, { status: 400 });
+  const errors = validateCanine(newCanine);
+  if (errors.length > 0) {
+    return Response.json({ error: errors.join(", ") }, { status: 400 });
   }
 
   test_canines.push(newCanine);
