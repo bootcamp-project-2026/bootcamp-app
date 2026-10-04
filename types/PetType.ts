@@ -1,5 +1,5 @@
 export type Canine = {
-  Image: File | string;
+  Image: string;
   Name: string;
   Breed: string;
   Age: "Baby" | "Young" | "Adult" | "Senior";
