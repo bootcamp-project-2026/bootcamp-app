@@ -1,4 +1,4 @@
-import CanineSchema from "@/src/database/canineSchema";
+import Canine from "@/src/database/canineSchema";
 import connectDB from "@/src/database/db";
 
 /**
@@ -9,7 +9,7 @@ export async function GET() {
   await connectDB();
 
   try {
-    const canines = await CanineSchema.find().sort({ Name: 1 }).orFail();
+    const canines = await Canine.find().sort({ Name: 1 }).orFail();
 
     return Response.json({ canines: canines }, { status: 200 });
   } catch (err) {
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     ) {
       return Response.json({ error: "Invalid canine data" }, { status: 400 });
     }
-    const createdCanine = await CanineSchema.create(newCanine);
+    const createdCanine = await Canine.create(newCanine);
     return Response.json({ createdCanine }, { status: 201 });
   } catch (err) {
     return Response.json(
@@ -64,7 +64,7 @@ export async function DELETE(request: Request) {
       );
     }
 
-    const deletedCanine = await CanineSchema.findByIdAndDelete(id);
+    const deletedCanine = await Canine.findByIdAndDelete(id);
 
     if (!deletedCanine) {
       return Response.json({ error: "Canine not found" }, { status: 404 });

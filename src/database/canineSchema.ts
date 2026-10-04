@@ -14,7 +14,7 @@ export type Canine = {
   Story: string;
 };
 
-const CanineSchema = new Schema<Canine>(
+const Canine = new Schema<Canine>(
   {
     Image: {
       type: String,
@@ -75,4 +75,4 @@ const CanineSchema = new Schema<Canine>(
 );
 
 export default mongoose.models.Canine ||
-  mongoose.model<Canine>("CanineSchema", CanineSchema, "canines");
+  mongoose.model<Canine>("Canine", Canine, "canines");
