@@ -1,21 +1,21 @@
 import Canine from "@/src/database/canineSchema";
 import connectDB from "@/src/database/db";
+import mongoose from "mongoose";
 
 /**
  * GET /api/canines
  * @returns all canines from the database test/canines
  */
 export async function GET() {
-  await connectDB();
-
   try {
-    const canines = await Canine.find().sort({ Name: 1 }).orFail();
+    await connectDB();
+    const canines = await Canine.find().sort({ Name: 1 });
 
-    return Response.json({ canines: canines }, { status: 200 });
-  } catch (err) {
+    return Response.json(canines, {status: 200});
+  } catch {
     return Response.json(
       { error: "Unable to get canine data from database" },
-      { status: 500 },
+      { status: 500 }, 
     );
   }
 }
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     }
     const createdCanine = await Canine.create(newCanine);
     return Response.json({ createdCanine }, { status: 201 });
-  } catch (err) {
+  } catch{
     return Response.json(
       { error: "Unable to insert canine into database" },
       { status: 500 },
@@ -47,8 +47,8 @@ export async function POST(request: Request) {
 }
 
 /**
- * DELETE /api/canines?name=Name
- * Removes a canine fromthe database test/canines by id
+ * DELETE /api/canines?id=<MongoDB ObjectId>
+ * Removes a canine from the database test/canines by id
  */
 export async function DELETE(request: Request) {
   try {
@@ -62,6 +62,10 @@ export async function DELETE(request: Request) {
         { error: "A canine id is required" },
         { status: 400 },
       );
+    }
+
+    if (!mongoose.isValidObjectId(id)) {
+      return Response.json({ error: "Invalid canine id" }, { status: 400 });
     }
 
     const deletedCanine = await Canine.findByIdAndDelete(id);
