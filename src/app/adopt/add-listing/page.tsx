@@ -124,9 +124,10 @@ export default function AddListingPage() {
         <label className={formStyles.label}>
           Age
           <select name="Age" value={form.Age} onChange={handleChange}>
-            {AGES.map((age) => (
-              <option key={age}>{age}</option>
-            ))}
+            <option value="Baby">Baby (0-1)</option>
+            <option value="Young">Young (1-3)</option>
+            <option value="Adult">Adult (3-7)</option>
+            <option value="Senior">Senior (7+)</option>
           </select>
         </label>
 
@@ -151,7 +152,7 @@ export default function AddListingPage() {
 
         {/* Immunization field */}
         <label className={formStyles.label}>
-          Immunization
+          Immunizations (ex. Rabies, DHPP, etc)
           <input
             name="Immunization"
             value={form.Immunization}
@@ -161,13 +162,13 @@ export default function AddListingPage() {
 
         {/* Size field */}
         <label className={formStyles.label}>
-          Size
+          Size (length in inches)
           <input name="Size" value={form.Size} onChange={handleChange} />
         </label>
 
         {/* Weight field */}
         <label className={formStyles.label}>
-          Weight
+          Weight (in lbs)
           <input
             type="number"
             name="Weight"
@@ -196,7 +197,7 @@ export default function AddListingPage() {
 
         {/* Story field: this would also take the full width of the form */}
         <label className={`${formStyles.label} ${formStyles.full}`}>
-          Story
+          Their Story
           <textarea name="Story" value={form.Story} onChange={handleChange} />
         </label>
 
