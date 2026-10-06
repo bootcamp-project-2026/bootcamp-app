@@ -1,5 +1,4 @@
-import { Canine } from "@/types/PetType";
-
+import { Canine } from "@/src/database/canineSchema";
 export const AGES = ["Baby", "Young", "Adult", "Senior"] as const;
 export const SEXES = ["Male", "Female"] as const;
 

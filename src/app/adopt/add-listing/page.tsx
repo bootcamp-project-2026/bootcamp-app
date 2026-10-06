@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "../adopt.module.css";
 import formStyles from "./add-listing.module.css";
-import { Canine } from "@/types/PetType";
 import { AGES, SEXES, validateCanine } from "@/src/lib/canineValidation";
+import { Canine } from "@/src/database/canineSchema";
 
 // The photos we have in /public/pets. There is no image upload yet,
 // so the user picks one of these instead
