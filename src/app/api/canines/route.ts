@@ -1,6 +1,7 @@
 import Canine from "@/src/database/canineSchema";
 import connectDB from "@/src/database/db";
 import mongoose from "mongoose";
+import { validateCanine } from "@/src/lib/canineValidation";
 
 /**
  * GET /api/canines
@@ -11,11 +12,11 @@ export async function GET() {
     await connectDB();
     const canines = await Canine.find().sort({ Name: 1 });
 
-    return Response.json(canines, {status: 200});
+    return Response.json(canines, { status: 200 });
   } catch {
     return Response.json(
       { error: "Unable to get canine data from database" },
-      { status: 500 }, 
+      { status: 500 },
     );
   }
 }
@@ -29,16 +30,12 @@ export async function POST(request: Request) {
     await connectDB();
     const newCanine = await request.json();
 
-    if (
-      !newCanine ||
-      typeof newCanine !== "object" ||
-      Array.isArray(newCanine)
-    ) {
+    if (validateCanine(newCanine).length > 0) {
       return Response.json({ error: "Invalid canine data" }, { status: 400 });
     }
     const createdCanine = await Canine.create(newCanine);
     return Response.json({ createdCanine }, { status: 201 });
-  } catch{
+  } catch {
     return Response.json(
       { error: "Unable to insert canine into database" },
       { status: 500 },

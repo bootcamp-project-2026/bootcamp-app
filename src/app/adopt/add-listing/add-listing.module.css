@@ -1,0 +1,41 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: blue;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: bold;
+}
+
+.label input,
+.label select,
+.label textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+  font-weight: normal;
+  color: rgb(145, 145, 247);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.error {
+  grid-column: 1 / -1;
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}

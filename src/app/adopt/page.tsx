@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { preload } from "react-dom";
 import styles from "./adopt.module.css";
 import CanineCard, { type Canine } from "../../components/CanineCard";
+import Link from "next/link";
 
 export default function AdoptPage() {
   preload("/hex-light.svg", { as: "image" });
@@ -51,6 +52,9 @@ export default function AdoptPage() {
   return (
     <main className={styles.page}>
       <p className={styles.title}>ADOPT A CANINE</p>
+      <Link href="/adopt/add-listing" className={styles.viewbutton}>
+        ADD A LISTING
+      </Link>
       <div className={styles.container}>
         {/* make one reusable card for every canine returned by the API */}
         {canines.map((canine) => (
