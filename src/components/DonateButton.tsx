@@ -5,7 +5,7 @@
 import styles from "../app/donate/donate.module.css";
 
 const DONATE_URL =
-  "https://www.paypal.com/donate?token=CXg6UHV177pOZOamyXYUq4R93zRAO8HQmeVZsOP6XuAlM2e2h3dI-rzQ5Le58kR_oArAHl5gGvkGWz7l";
+  "https://www.paypal.com/us/fundraiser/charity/2024146";
 
 export default function Selector() {
   return (
