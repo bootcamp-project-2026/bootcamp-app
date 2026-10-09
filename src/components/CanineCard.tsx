@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../app/adopt/adopt.module.css";
 
 export type Canine = {
+  _id: string;
   Image: string;
   Name: string;
   Breed: string;
@@ -33,7 +35,9 @@ export default function CanineCard({ canine }: CanineCardProps) {
         <p>Sex: {canine.Sex}</p>
       </div>
       <button className={styles.viewbutton}>VIEW ME</button>
-      <button className={styles.deletebutton}>DELETE ME</button>
+      <Link href="/sign-in" className={styles.deletebutton}>
+        DELETE ME
+      </Link>
     </article>
   );
 }

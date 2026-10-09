@@ -53,7 +53,7 @@ export default function AdoptPage() {
   return (
     <main className={`${styles.page} ${shared.hexBackground}`}>
       <p className={`${styles.title} ${shared.wobble}`}>ADOPT A CANINE</p>
-      <Link href="/adopt/add-listing" className={styles.viewbutton}>
+      <Link href="/sign-in" className={styles.viewbutton}>
         ADD A LISTING
       </Link>
       <div className={styles.container}>
