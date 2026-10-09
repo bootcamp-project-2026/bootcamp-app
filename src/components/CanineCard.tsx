@@ -33,6 +33,7 @@ export default function CanineCard({ canine }: CanineCardProps) {
         <p>Sex: {canine.Sex}</p>
       </div>
       <button className={styles.viewbutton}>VIEW ME</button>
+      <button className={styles.deletebutton}>DELETE ME</button>
     </article>
   );
 }

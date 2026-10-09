@@ -2,6 +2,7 @@ import Canine from "@/src/database/canineSchema";
 import connectDB from "@/src/database/db";
 import mongoose from "mongoose";
 import { validateCanine } from "@/src/lib/canineValidation";
+import { requireAdmin } from "@/src/lib/requireAdmin";
 
 /**
  * GET /api/canines
@@ -26,6 +27,14 @@ export async function GET() {
  * Accepts a new canine and adds it to the database test/canines
  */
 export async function POST(request: Request) {
+  const authorization = await requireAdmin();
+  if(!authorization.authorized){
+    return Response.json(
+      { error: authorization.error },
+      { status: authorization.status}
+    )
+  }
+
   try {
     await connectDB();
     const newCanine = await request.json();
@@ -33,6 +42,7 @@ export async function POST(request: Request) {
     if (validateCanine(newCanine).length > 0) {
       return Response.json({ error: "Invalid canine data" }, { status: 400 });
     }
+
     const createdCanine = await Canine.create(newCanine);
     return Response.json({ createdCanine }, { status: 201 });
   } catch {
@@ -48,6 +58,14 @@ export async function POST(request: Request) {
  * Removes a canine from the database test/canines by id
  */
 export async function DELETE(request: Request) {
+  const authorization = await requireAdmin();
+  if(!authorization.authorized){
+    return Response.json(
+      { error: authorization.error },
+      { status: authorization.status}
+    )
+  }
+
   try {
     await connectDB();
 

@@ -80,7 +80,7 @@
   text-align: left;
 }
 
-.viewbutton {
+.viewbutton, .deletebutton {
   display: inline-block;
   padding: 12px 24px;
   border: none;
@@ -97,13 +97,25 @@
     transform 0.1s ease;
 }
 
-.viewbutton:hover {
+.viewbutton:hover, .deletebutton:hover {
   background-color: var(--highlight);
   transform: scale(1.05);
 }
 
-.viewbutton:active {
+.viewbutton:active, .deletebutton:active {
   transform: scale(0.98);
+}
+
+.deletebutton{
+  background-color: red;
+}
+
+.deletebutton:hover{
+  background-color: red;
+}
+
+.deletebutton:active{
+  background-color: red;
 }
 
 @media (max-width: 600px) {
