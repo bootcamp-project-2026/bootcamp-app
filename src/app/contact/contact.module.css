@@ -1,0 +1,112 @@
+body {
+  background-color: white;
+}
+
+.contactTitle {
+  color: cornflowerblue;
+  text-align: center;
+  font-size: clamp(2rem, calc(5vw + 1rem), 5rem);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 1rem;
+}
+
+.locationInfoContainer,
+.alternativeContacts {
+  text-align: center;
+}
+
+.locationTitle,
+.alternativeTitle {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: coral;
+  font-size: clamp(0.5rem, calc(2.5vw + 0.5rem), 2.5rem);
+  margin: 1rem;
+  text-align: center;
+}
+
+.locationInfoContainer,
+.alternativeContacts {
+  color: #463737f2;
+  margin: 0 0 2rem 0;
+  font-size: clamp(0.5rem, calc(1vw + 0.5rem), 2rem);
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.contactForm {
+  border-width: 2px;
+  border-color: #e2e8f0;
+  border-radius: 12px;
+  margin: 4rem auto;
+  max-width: 800px;
+  padding: 3rem;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.personalContactInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.nameContainer,
+.emailContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.inputField,
+.textareaField {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-width: 2px;
+  border-color: #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+}
+
+.textareaField {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitButton {
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 6px;
+}
+
+.submitButton:hover {
+  background-color: coral;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .personalContactInfo {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contactForm {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+}
