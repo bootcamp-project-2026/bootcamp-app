@@ -1,8 +1,9 @@
 import styles from "./about.module.css";
+import shared from "../../styles/shared.module.css";
 
 export default function about() {
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${shared.hexBackground}`}>
       <section id="about-section" className={styles.about}>
         {/* Page title */}
         <h1 id="about-title" className={styles.aboutTitle}>

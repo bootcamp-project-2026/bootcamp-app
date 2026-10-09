@@ -1,10 +1,11 @@
 import styles from "./home.module.css";
+import shared from "../../styles/shared.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${shared.hexBackground}`}>
       <section id="home-section" className={styles.home}>
-        <h1 className={styles.titleContainer}>
+        <h1 className={`${styles.titleContainer} ${shared.wobble}`}>
           <span className={styles.titleTopHalf}>MEADE CANINE</span>
           <span className={styles.titleBottomHalf}>Rescue & Sanctuary</span>
         </h1>

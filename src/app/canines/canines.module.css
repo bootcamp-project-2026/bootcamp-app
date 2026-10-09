@@ -9,7 +9,7 @@
   border: 1px solid #dbeafe;
   border-left: 4px solid #0d65e9;
   border-radius: 14px;
-  background: #ffffff;
+  background: #fff;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
   color: #111827;
   transition:
@@ -19,15 +19,15 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
   border-color: #0d65e9;
   box-shadow: 0 12px 24px rgba(13, 101, 233, 0.16);
+  transform: translateY(-4px);
 }
 
 .image {
+  flex-shrink: 0;
   width: 210px;
   height: 148px;
-  flex-shrink: 0;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -50,8 +50,8 @@
 
 @media (max-width: 600px) {
   .card {
-    align-items: flex-start;
     flex-direction: column;
+    align-items: flex-start;
     gap: 16px;
   }
 
