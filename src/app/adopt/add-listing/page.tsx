@@ -7,17 +7,6 @@ import formStyles from "./add-listing.module.css";
 import { AGES, SEXES, validateCanine } from "@/src/lib/canineValidation";
 import { Canine } from "@/src/database/canineSchema";
 
-// The photos we have in /public/pets. There is no image upload yet,
-// so the user picks one of these instead
-const IMAGES = [
-  { file: "/pets/Ace.jpg", label: "Ace" },
-  { file: "/pets/Bella.jpg", label: "Bella" },
-  { file: "/pets/Brownie.jpg", label: "Brownie" },
-  { file: "/pets/griselda.jpg", label: "Griselda" },
-  { file: "/pets/sweetpea.jpg", label: "Sweetpea" },
-  { file: "/pets/ziggy.jpg", label: "Ziggy" },
-];
-
 /**
  * Form page for adding a new canine listing.
  * Submits to POST /api/canines and goes back to the adopt page on success
@@ -30,7 +19,7 @@ export default function AddListingPage() {
   // Neutered, Weight and Details are converted to a boolean, a number and an
   // array on submit
   const [form, setForm] = useState({
-    Image: IMAGES[0].file,
+    Image: "",
     Name: "",
     Breed: "",
     Age: AGES[0],
@@ -42,6 +31,10 @@ export default function AddListingPage() {
     Details: "",
     Story: "",
   });
+
+  // the file a user uploaded stays in the browser until submit, then it gets
+  // uploaded and replaced by a url in form.Image
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   // Message shown under the form when validation or the request fails
   const [error, setError] = useState("");
@@ -60,13 +53,45 @@ export default function AddListingPage() {
     setForm({ ...form, [name]: value });
   }
 
+  //
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setImageFile(event.target.files?.[0] ?? null);
+  }
+
   async function handleSubmit(event: React.FormEvent) {
     // stop the browser from reloading the page
     event.preventDefault();
 
+    // a file has to be picked before we can upload anything
+    if (!imageFile) {
+      setError("Image is required");
+      return;
+    }
+
+    // uploadData is an empty box of fields, append the image in it named file
+    const uploadData = new FormData();
+    uploadData.append("file", imageFile);
+
+    // sends image to upload route, (upload in api/canines/upload)
+    const uploadResponse = await fetch("/api/canines/upload", {
+      method: "POST",
+      body: uploadData,
+    });
+
+    if (!uploadResponse.ok) {
+      const data = await uploadResponse.json();
+      setError(data.error);
+      return;
+    }
+
+    // the route answers with { url } pointing at the stored image
+    const { url } = await uploadResponse.json();
+
     // Build the Canine the API expects out of the form values
     const canine: Canine = {
       ...form,
+      //blob url replaces empty string from form
+      Image: url,
       // the dropdown gives back the text "true" or "false"
       Neutered: form.Neutered === "true",
       Weight: Number(form.Weight),
@@ -179,14 +204,13 @@ export default function AddListingPage() {
 
         {/* Image dropdown */}
         <label className={formStyles.label}>
-          Image
-          <select name="Image" value={form.Image} onChange={handleChange}>
-            {IMAGES.map((image) => (
-              <option key={image.file} value={image.file}>
-                {image.label}
-              </option>
-            ))}
-          </select>
+          Image (JPEG or PNG, max 4MB)
+          <input
+            type="file"
+            name="Image"
+            accept="image/jpeg,image/png"
+            onChange={handleFileChange}
+          />
         </label>
 
         {/*  Details field: this would take the full width of the form */}
