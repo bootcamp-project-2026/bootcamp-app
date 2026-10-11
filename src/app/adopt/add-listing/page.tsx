@@ -41,6 +41,7 @@ export default function AddListingPage() {
     Weight: "",
     Details: "",
     Story: "",
+    AdoptionLink: "",
   });
 
   // Message shown under the form when validation or the request fails
@@ -173,6 +174,17 @@ export default function AddListingPage() {
             type="number"
             name="Weight"
             value={form.Weight}
+            onChange={handleChange}
+          />
+        </label>
+
+        {/* Adoption link field */}
+        <label className={formStyles.label}>
+          Adoption link (optional)
+          <input
+            type="url"
+            name="AdoptionLink"
+            value={form.AdoptionLink}
             onChange={handleChange}
           />
         </label>
