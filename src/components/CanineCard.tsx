@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../app/adopt/adopt.module.css";
 
 import { type Canine } from "../database/canineSchema";
@@ -24,6 +25,9 @@ export default function CanineCard({ canine }: CanineCardProps) {
         <p>Sex: {canine.Sex}</p>
       </div>
       <button className={styles.viewbutton}>VIEW ME</button>
+      <Link href="/sign-in" className={styles.deletebutton}>
+        DELETE ME
+      </Link>
     </article>
   );
 }
