@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./home.module.css";
 import shared from "../../styles/shared.module.css";
 import CanineCarousel from "../../components/CanineCarousel";
-import { type Canine } from "../database/canineSchema";
+import { type Canine } from "../../database/canineSchema";
 
 const CAROUSEL_SIZE = 10;
 

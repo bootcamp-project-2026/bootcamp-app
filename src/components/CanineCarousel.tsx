@@ -75,15 +75,22 @@ export default function CanineCarousel({ canines }: CanineCarouselProps) {
               role="group"
               aria-roledescription="slide"
             >
-              <div className={styles.card}>
+              <div className={styles.card} tabIndex={0}>
                 <p className={styles.name}>{canine.Name}</p>
-                <img
-                  className={styles.image}
-                  src={canine.Image}
-                  alt={`A dog named ${canine.Name}.`}
-                  draggable={false}
-                  loading="lazy"
-                />
+                <div className={styles.imageWrap}>
+                  <img
+                    className={styles.image}
+                    src={canine.Image}
+                    alt={`A dog named ${canine.Name}.`}
+                    draggable={false}
+                    loading="lazy"
+                  />
+                  {canine.Story && (
+                    <div className={styles.story}>
+                      <p className={styles.storyText}>{canine.Story}</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
