@@ -29,25 +29,43 @@
 }
 
 .card {
-  padding-bottom: 1rem;
+  padding: 1.25rem 0 1rem;
   border-radius: 15px;
   background-color: rgba(100, 148, 237, 0.5);
   text-align: center;
   transition: transform 0.2s ease;
 }
 
-.card:hover {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .card:hover {
+    transform: scale(1.04);
+  }
+}
+
+@media (hover: none) {
+  .active {
+    transform: scale(1.04);
+  }
 }
 
 .name {
-  margin: 1rem;
+  margin: 0 1rem 0.25rem;
   color: white;
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 5px;
   text-indent: 5px;
+  text-align: center;
+}
+
+.details {
+  margin: 0 1rem;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-indent: 1px;
   text-align: center;
 }
 
@@ -71,11 +89,18 @@
     transform 0.25s ease;
 }
 
-/* blur + darken the photo on hover*/
-.card:hover .image,
-.card:focus-within .image {
-  filter: blur(4px) brightness(0.35);
-  transform: scale(1.05);
+@media (hover: hover) {
+  .card:hover .image {
+    filter: blur(4px) brightness(0.35);
+    transform: scale(1.05);
+  }
+}
+
+@media (hover: none) {
+  .active .image {
+    filter: blur(4px) brightness(0.35);
+    transform: scale(1.05);
+  }
 }
 
 .story {
@@ -92,9 +117,16 @@
   transition: opacity 0.25s ease;
 }
 
-.card:hover .story,
-.card:focus-within .story {
-  opacity: 1;
+@media (hover: hover) {
+  .card:hover .story {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .active .story {
+    opacity: 1;
+  }
 }
 
 .storyText {
@@ -106,6 +138,7 @@
   line-height: 1.5;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   -webkit-line-clamp: 9;
+  line-clamp: 9;
   -webkit-box-orient: vertical;
 }
 

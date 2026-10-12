@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./CanineCarousel.module.css";
 import { type Canine } from "../database/canineSchema";
@@ -15,6 +15,18 @@ export default function CanineCarousel({ canines }: CanineCarouselProps) {
     slidesToScroll: 1,
     containScroll: "trimSnaps",
   });
+
+  const [activeName, setActiveName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const closeStory = (event: PointerEvent) => {
+      if (!(event.target as Element).closest("[data-card]")) {
+        setActiveName(null);
+      }
+    };
+    document.addEventListener("pointerdown", closeStory);
+    return () => document.removeEventListener("pointerdown", closeStory);
+  }, []);
 
   const subscribe = useCallback(
     (onChange: () => void) => {
@@ -75,8 +87,21 @@ export default function CanineCarousel({ canines }: CanineCarouselProps) {
               role="group"
               aria-roledescription="slide"
             >
-              <div className={styles.card} tabIndex={0}>
+              <div
+                className={`${styles.card} ${
+                  activeName === canine.Name ? styles.active : ""
+                }`}
+                data-card
+                onClick={() =>
+                  setActiveName((current) =>
+                    current === canine.Name ? null : canine.Name,
+                  )
+                }
+              >
                 <p className={styles.name}>{canine.Name}</p>
+                <p className={styles.details}>
+                  {canine.Breed} · {canine.Age}
+                </p>
                 <div className={styles.imageWrap}>
                   <img
                     className={styles.image}
