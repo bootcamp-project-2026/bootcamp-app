@@ -1,25 +1,162 @@
+.page {
+  min-height: 100vh;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 .aboutTitle {
-  margin: 1rem;
+  margin: 0;
+  padding: 2rem 1rem 1.5rem;
   color: var(--primary);
   font-family: var(--font-heading);
-  font-size: clamp(1rem, calc(5vw + 1rem), 5rem);
+  font-size: clamp(2rem, calc(4vw + 1rem), 5rem);
+  font-weight: 700;
+  line-height: 1;
   text-align: center;
 }
 
-.ourStoryTitle,
+.ourStory {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent, #000 5%, #000 99%, transparent),
+    linear-gradient(to right, transparent, #000 1%, #000 99%, transparent);
+  mask-image:
+    linear-gradient(to bottom, transparent, #000 5%, #000 99%, transparent),
+    linear-gradient(to right, transparent, #000 1%, #000 99%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.ourStoryImage {
+  width: 100%;
+}
+
+.ourStoryImage img {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 46vw, 680px);
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.ourStoryText {
+  position: absolute;
+  inset: 0 0 0 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: clamp(1rem, 3vw, 3rem);
+  overflow-y: auto;
+  background: rgba(50, 38, 38, 0.72);
+  backdrop-filter: blur(3px);
+  color: white;
+  text-align: center;
+}
+
+.ourStoryTitle {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.2vw + 0.5rem, 3.25rem);
+  line-height: 1.1;
+}
+
+.ourStoryParagraph {
+  margin: 0.5rem 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 0.35vw + 0.7rem, 1.2rem);
+  line-height: 1.6;
+}
+
+.aboutCharlotte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+  text-align: center;
+}
+
 .aboutCharlotteTitle {
-  margin: 1rem;
+  margin: 0 0 1.5rem;
   color: var(--accent);
   font-family: var(--font-heading);
-  font-size: clamp(0.5rem, calc(2.5vw + 0.5rem), 2.5rem);
-  text-align: center;
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 3.5rem);
 }
 
-.ourStoryParagraph,
 .aboutCharlotteParagraph {
+  box-sizing: border-box;
   width: 100%;
-  margin: 0 0 5rem;
-  padding: 0 clamp(1rem, 15vw, 20rem);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
   color: #463737f2;
   font-family: var(--font-body);
+  font-size: clamp(0.95rem, 0.35vw + 0.8rem, 1.25rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 1023px) {
+  .ourStoryText {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ourStory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .ourStoryImage {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 12%,
+      #000 78%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 12%,
+      #000 78%,
+      transparent
+    );
+  }
+
+  .ourStoryImage img {
+    height: clamp(220px, 60vw, 360px);
+  }
+
+  .ourStoryText {
+    position: static;
+    width: 100%;
+    padding: 1.5rem 1.25rem;
+    overflow-y: visible;
+    background: none;
+    backdrop-filter: none;
+    color: rgba(70, 55, 55, 0.95);
+  }
+
+  .ourStoryTitle {
+    color: var(--accent);
+  }
+
+  .aboutCharlotte {
+    padding: 2rem 0.5rem 3rem;
+  }
 }

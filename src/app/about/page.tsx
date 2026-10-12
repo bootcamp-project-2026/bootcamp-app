@@ -1,21 +1,22 @@
 import styles from "./about.module.css";
 import shared from "../../styles/shared.module.css";
 
-export default function about() {
+export default function About() {
   return (
     <main className={`${styles.page} ${shared.hexBackground}`}>
       <section id="about-section" className={styles.about}>
-        {/* Page title */}
-        <h1 id="about-title" className={styles.aboutTitle}>
-          About
+        <h1
+          id="about-title"
+          className={`${styles.aboutTitle} ${shared.wobble}`}
+        >
+          ABOUT US
         </h1>
 
-        {/* Our story section */}
         <section id="our-story-subsection" className={styles.ourStory}>
           <div className={styles.ourStoryImage}>
             <img src="/aboutimage.jpeg" alt="Charlotte Meade with many dogs" />
           </div>
-          <div className={styles.heroText}>
+          <div className={styles.ourStoryText}>
             <h2 id="our-story-title" className={styles.ourStoryTitle}>
               Our Story
             </h2>
@@ -35,12 +36,14 @@ export default function about() {
           </div>
         </section>
 
-        {/* About the founder */}
         <section
           id="about-charlotte-subsection"
           className={styles.aboutCharlotte}
         >
-          <h2 id="about-charlotte-title" className={styles.aboutCharlotteTitle}>
+          <h2
+            id="about-charlotte-title"
+            className={`${styles.aboutCharlotteTitle} ${shared.wobble}`}
+          >
             About the founder, Charlotte Meade
           </h2>
           <p
