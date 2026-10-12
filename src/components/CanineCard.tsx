@@ -1,13 +1,7 @@
 import Image from "next/image";
 import styles from "../app/adopt/adopt.module.css";
 
-export type Canine = {
-  Image: string;
-  Name: string;
-  Breed: string;
-  Age: "Baby" | "Young" | "Adult" | "Senior";
-  Sex: "Male" | "Female";
-};
+import { type Canine } from "../database/canineSchema";
 
 type CanineCardProps = {
   canine: Canine;
