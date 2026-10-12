@@ -1,5 +1,10 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import styles from "./home.module.css";
 import shared from "../../styles/shared.module.css";
+import { type Canine } from "../../database/canineSchema";
 
 export default function Home() {
   return (
