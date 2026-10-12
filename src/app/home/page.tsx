@@ -7,7 +7,7 @@ import shared from "../../styles/shared.module.css";
 import CanineCarousel from "../../components/CanineCarousel";
 import { type Canine } from "../../database/canineSchema";
 
-const CAROUSEL_SIZE = 5;
+const CAROUSEL_SIZE = 10;
 
 function pickRandom<T>(items: T[], count: number): T[] {
   return [...items].sort(() => Math.random() - 0.5).slice(0, count);
@@ -79,6 +79,10 @@ export default function Home() {
           <h2 className={`${styles.dogTitle} ${shared.wobble}`}>
             Meet Some Pups!
           </h2>
+          <p className={styles.dogSubtitle}>
+            A few of our sweet seniors and special needs dogs who are hoping to
+            find a loving home.
+          </p>
           {loading ? (
             <p>Loading canines...</p>
           ) : error ? (

@@ -108,6 +108,16 @@
   font-size: clamp(1.75rem, 2.5vw + 1rem, 3.5rem);
 }
 
+.dogSubtitle {
+  max-width: 700px;
+  margin: 0 0 1.5rem;
+  padding: 0 1rem;
+  color: #463737f2;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.5vw + 0.85rem, 1.35rem);
+  line-height: 1.5;
+}
+
 .viewButton {
   display: inline-block;
   margin-top: 2rem;

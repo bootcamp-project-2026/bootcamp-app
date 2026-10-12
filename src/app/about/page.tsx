@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./about.module.css";
 import shared from "../../styles/shared.module.css";
 
@@ -9,7 +10,7 @@ export default function About() {
           id="about-title"
           className={`${styles.aboutTitle} ${shared.wobble}`}
         >
-          ABOUT US
+          About
         </h1>
 
         <section id="our-story-subsection" className={styles.ourStory}>
@@ -34,6 +35,33 @@ export default function About() {
               surely for that one dog, the world will change forever”.
             </p>
           </div>
+        </section>
+
+        <section id="journey-subsection" className={styles.journey}>
+          <h2
+            id="journey-title"
+            className={`${styles.journeyTitle} ${shared.wobble}`}
+          >
+            From the East Coast to California
+          </h2>
+          <p id="journey-paragraph" className={styles.journeyParagraph}>
+            That fateful weekend changed her world too. The next few years were
+            spent scouring dog pounds in eastern NewYork and CT for dogs in
+            danger. Adopters were easy to find! Great news! Matches made in
+            heaven. The rescue became too big for a setting just outside NYC and
+            Charlotte moved herself and a big part of Meade Canine Rescue to
+            California, a state she was stunned to learn had a staggering
+            euthanasia rate. In fact there were so many dogs being killed in
+            enormous city and county shelters the likes of which she had never
+            seen in the East, she decided to narrow her scope to seniors and
+            special needs dogs and began working tirelessly to make an impact by
+            helping as many as she could get to safety. A drop in the bucket but
+            that bucket filled fast and Charlotte kept emptying it successfully
+            with heartwarming stories of lives saved. She kept refilling it,
+            saving hundreds of dogs a year. Many were in conditions hard to
+            believe but all thrived in the fresh air and free ranging environs
+            and the ranch just got better and better.
+          </p>
         </section>
 
         <section
@@ -61,6 +89,23 @@ export default function About() {
             to people’s love of bacon, sold the inn and Meade Canine Rescue was
             born.
           </p>
+        </section>
+
+        <section id="support-subsection" className={styles.support}>
+          <h2
+            id="support-title"
+            className={`${styles.supportTitle} ${shared.wobble}`}
+          >
+            Help Us Keep Saving Lives
+          </h2>
+          <p id="support-paragraph" className={styles.supportParagraph}>
+            Every dog here is given a second chance because of people like you.
+            Your support helps us care for senior and special needs dogs until
+            they find their forever homes.
+          </p>
+          <Link href="/donate" className={styles.supportButton}>
+            SUPPORT OUR DOGS
+          </Link>
         </section>
       </section>
     </main>
