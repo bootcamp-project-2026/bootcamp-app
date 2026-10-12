@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest"
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^10.5.2",
