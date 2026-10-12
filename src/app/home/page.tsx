@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./home.module.css";
 import shared from "../../styles/shared.module.css";
 import CanineCarousel from "../../components/CanineCarousel";
-import { type Canine } from "../../database/canineSchema";
+import { type Canine } from "../database/canineSchema";
 
 const CAROUSEL_SIZE = 10;
 
@@ -77,7 +78,9 @@ export default function Home() {
 
         {/* Dogs section */}
         <section id="dog-subsection" className={styles.dogContainer}>
-          <h2 className={styles.dogTitle}> Meet Some Pups!</h2>
+          <h2 className={`${styles.dogTitle} ${shared.wobble}`}>
+            Meet Some Pups!
+          </h2>
           {loading ? (
             <p>Loading canines...</p>
           ) : error ? (
@@ -85,6 +88,9 @@ export default function Home() {
           ) : (
             <CanineCarousel canines={canines} />
           )}
+          <Link href="/adopt" className={styles.viewButton}>
+            VIEW ALL DOGS
+          </Link>
         </section>
       </section>
     </main>

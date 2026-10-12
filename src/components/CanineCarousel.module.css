@@ -9,6 +9,7 @@
 
 .viewport {
   overflow: hidden;
+  padding: 1rem 0;
 }
 
 .container {
@@ -28,9 +29,15 @@
 }
 
 .card {
+  padding-bottom: 1rem;
   border-radius: 15px;
   background-color: rgba(100, 148, 237, 0.5);
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.04);
 }
 
 .name {
@@ -40,6 +47,9 @@
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 5px;
+  /* offsets the trailing letter-spacing so the name is truly centered */
+  text-indent: 5px;
+  text-align: center;
 }
 
 .image {
@@ -70,6 +80,11 @@
   line-height: 1;
   cursor: pointer;
   transform: translateY(-50%);
+  transition: transform 0.2s ease;
+}
+
+.button:not(:disabled):hover {
+  transform: translateY(-50%) scale(1.15);
 }
 
 .button:disabled {
