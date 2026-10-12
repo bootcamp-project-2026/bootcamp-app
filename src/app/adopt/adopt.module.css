@@ -13,6 +13,7 @@
 
 .title {
   --wobble-duration: 5s;
+  margin-top: 3rem;
   color: var(--primary);
   font-size: clamp(2rem, 8vw, 60px);
   font-weight: bold;
@@ -23,6 +24,7 @@
   box-sizing: border-box;
   width: min(120vh, 100%);
   max-height: 70vh;
+  margin-top: 2.5rem;
   padding: 20px;
   overflow: auto;
   border: 4px solid var(--highlight);

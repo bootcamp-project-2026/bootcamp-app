@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CanineCard, { type Canine } from "@/src/components/CanineCard";
+import CanineCard from "@/src/components/CanineCard";
+import { type Canine } from "@/src/database/canineSchema";
 
 /**
  * canine display page.

@@ -16,6 +16,8 @@
   "dependencies": {
     "@clerk/nextjs": "^7.9.11",
     "@paypal/react-paypal-js": "^10.5.2",
+    "@vercel/blob": "^2.8.1",
+    "embla-carousel-react": "^8.6.0",
     "mongoose": "^9.10.2",
     "next": "16.3.5",
     "react": "19.2.8",
@@ -41,5 +43,9 @@
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^5.0.3"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true,
+    "unrs-resolver@1.12.2": true
   }
 }

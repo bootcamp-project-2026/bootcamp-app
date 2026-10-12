@@ -1,7 +1,43 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./home.module.css";
 import shared from "../../styles/shared.module.css";
+import CanineCarousel from "../../components/CanineCarousel";
+import { type Canine } from "../../database/canineSchema";
+
+const CAROUSEL_SIZE = 10;
+
+function pickRandom<T>(items: T[], count: number): T[] {
+  return [...items].sort(() => Math.random() - 0.5).slice(0, count);
+}
 
 export default function Home() {
+  const [canines, setCanines] = useState<Canine[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadCanines() {
+      try {
+        const response = await fetch("/api/canines");
+        if (!response.ok) {
+          throw new Error("unable to load canines.");
+        }
+
+        const data: Canine[] = await response.json();
+        setCanines(pickRandom(data, CAROUSEL_SIZE));
+      } catch {
+        setError("Unable to load pups right now.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadCanines();
+  }, []);
+
   return (
     <main className={`${styles.page} ${shared.hexBackground}`}>
       <section id="home-section" className={styles.home}>
@@ -10,7 +46,6 @@ export default function Home() {
           <span className={styles.titleBottomHalf}>Rescue & Sanctuary</span>
         </h1>
 
-        {/* Hero section */}
         <section id="hero-subsection" className={styles.hero}>
           <div className={styles.heroImage}>
             <img
@@ -40,44 +75,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Dogs section */}
         <section id="dog-subsection" className={styles.dogContainer}>
-          <h2 className={styles.dogTitle}> Meet Some Pups!</h2>
-
-          {/* For 2x2 grid of dogs */}
-          <div className={styles.dogGrid}>
-            {/* dog1 */}
-            <div className={styles.dogCard}>
-              <p className={styles.dogName}>Ziggy</p>
-              <div className={styles.dogImage}>
-                <img src="/pets/ziggy.jpg" alt="A dog named Ziggy." />
-              </div>
-            </div>
-
-            {/* dog2 */}
-            <div className={styles.dogCard}>
-              <p className={styles.dogName}>Griselda</p>
-              <div id="griseldaimg" className={styles.dogImage}>
-                <img src="/pets/griselda.jpg" alt="A dog named Griselda." />
-              </div>
-            </div>
-
-            {/* dog3 */}
-            <div className={styles.dogCard}>
-              <p className={styles.dogName}>Sweetpea</p>
-              <div className={styles.dogImage}>
-                <img src="/pets/sweetpea.jpg" alt="A dog named Sweetpea." />
-              </div>
-            </div>
-
-            {/* dog4 */}
-            <div className={styles.dogCard}>
-              <p className={styles.dogName}>Ace</p>
-              <div className={styles.dogImage}>
-                <img src="/pets/homeace.jpg" alt="A dog named Homeace." />
-              </div>
-            </div>
-          </div>
+          <h2 className={`${styles.dogTitle} ${shared.wobble}`}>
+            Meet Some Pups!
+          </h2>
+          <p className={styles.dogSubtitle}>
+            A few of our sweet seniors and special needs dogs who are hoping to
+            find a loving home.
+          </p>
+          {loading ? (
+            <p>Loading canines...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : (
+            <CanineCarousel canines={canines} />
+          )}
+          <Link href="/adopt" className={styles.viewButton}>
+            VIEW ALL DOGS
+          </Link>
         </section>
       </section>
     </main>

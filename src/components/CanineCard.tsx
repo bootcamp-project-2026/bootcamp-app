@@ -2,28 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../app/adopt/adopt.module.css";
 
-export type Canine = {
-  _id: string;
-  Image: string;
-  Name: string;
-  Breed: string;
-  Age: "Baby" | "Young" | "Adult" | "Senior";
-  Sex: "Male" | "Female";
-};
+import { type Canine } from "../database/canineSchema";
 
 type CanineCardProps = {
   canine: Canine;
 };
 
 export default function CanineCard({ canine }: CanineCardProps) {
-  // Extract the file name from the Image path (e.g., "Ace.jpg" from "/pets/Ace.jpg")
-  const imageFileName = canine.Image.split("/").pop();
-
   return (
     <article className={styles.card}>
       <Image
         className={styles.image}
-        src={`/pets/${imageFileName}`}
+        src={canine.Image}
         alt={canine.Name}
         width={300}
         height={200}
