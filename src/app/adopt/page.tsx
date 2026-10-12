@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { preload } from "react-dom";
 import styles from "./adopt.module.css";
 import shared from "../../styles/shared.module.css";
-import CanineCard, { type Canine } from "../../components/CanineCard";
+import CanineCard from "../../components/CanineCard";
+import { type Canine } from "@/src/database/canineSchema";
 import Link from "next/link";
 
 export default function AdoptPage() {
