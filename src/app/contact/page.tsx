@@ -1,4 +1,5 @@
 import styles from "./contact.module.css";
+import ContactForm from "@/src/components/ContactForm";
 
 export default function Contact() {
   return (
@@ -26,34 +27,7 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* The actual form part */}
-        <form id="contact-form" className={styles.contactForm}>
-          <div
-            id="personal-contact-info"
-            className={styles.personalContactInfo}
-          >
-            {/* Name field */}
-            <div id="name-container" className={styles.nameContainer}>
-              <label htmlFor="name">Name:</label>
-              <input type="text" id="name" className={styles.inputField} />
-            </div>
-
-            {/* Email field */}
-            <div id="email-container" className={styles.emailContainer}>
-              <label htmlFor="email">Email:</label>
-              <input type="text" id="email" className={styles.inputField} />
-            </div>
-          </div>
-
-          {/* Message field */}
-          <div id="message-container" className={styles.messageContainer}>
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" className={styles.textareaField}></textarea>
-          </div>
-
-          {/* Submit button */}
-          <input type="submit" className={styles.submitButton} />
-        </form>
+        <ContactForm />
 
         {/* alternative contact section */}
         <section
