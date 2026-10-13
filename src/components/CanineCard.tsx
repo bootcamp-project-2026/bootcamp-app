@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "../app/adopt/adopt.module.css";
-
 import { type Canine } from "../database/canineSchema";
 
 type CanineCardProps = {
@@ -23,7 +22,14 @@ export default function CanineCard({ canine }: CanineCardProps) {
         <p>Age: {canine.Age}</p>
         <p>Sex: {canine.Sex}</p>
       </div>
-      <button className={styles.viewbutton}>VIEW ME</button>
+      <a
+        className={styles.viewbutton}
+        href={canine.AdoptionLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ADOPT ME
+      </a>
     </article>
   );
 }

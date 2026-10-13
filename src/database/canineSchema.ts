@@ -12,6 +12,7 @@ export type Canine = {
   Weight: number;
   Details: string[];
   Story: string;
+  AdoptionLink: string;
 };
 
 const canineSchema = new Schema<Canine>(
@@ -68,6 +69,11 @@ const canineSchema = new Schema<Canine>(
     Story: {
       type: String,
       required: true,
+      trim: true,
+    },
+    AdoptionLink: {
+      type: String,
+      required: false,
       trim: true,
     },
   },

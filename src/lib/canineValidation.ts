@@ -54,5 +54,17 @@ export function validateCanine(canine: Canine) {
     errors.push("Story is required");
   }
 
+  //checks if url starts in http, for security reasons
+  if (canine.AdoptionLink) {
+    try {
+      const url = new URL(canine.AdoptionLink);
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        throw new Error();
+      }
+    } catch {
+      errors.push("Adoption link must be a valid http(s) URL");
+    }
+  }
+
   return errors;
 }
