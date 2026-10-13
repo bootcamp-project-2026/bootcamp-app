@@ -28,6 +28,22 @@ export default function ContactForm() {
       isValid = false;
     }
 
+    //check email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.trim() === "") {
+      setEmailError("Email is required.");
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address.");
+      isValid = false;
+    }
+
+    // check message
+    if (message.trim() === "") {
+      setMessageError("Message is required.");
+      isValid = false;
+    }
+
     if (isValid) {
       setSuccess(true);
       setName("");
