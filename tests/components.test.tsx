@@ -2,6 +2,7 @@ import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import DonateButton from "../src/components/DonateButton";
 import CanineCard from "../src/components/CanineCard";
+import Navbar from "../src/components/Navbar";
 
 vi.mock("next/image", () => ({
   default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => <img {...props} />,
@@ -49,5 +50,23 @@ describe("CanineCard", () => {
     expect(screen.getByText("Age: Senior")).toBeTruthy();
     expect(screen.getByText("Sex: Male")).toBeTruthy();
     expect(screen.getByRole("button", { name: "VIEW ME" })).toBeTruthy();
+  });
+});
+
+describe("Navbar", () => {
+  test("renders links to every main page", () => {
+    render(<Navbar />);
+
+    const links = [
+      ["HOME", "/"],
+      ["ABOUT", "/about"],
+      ["ADOPT", "/adopt"],
+      ["DONATE", "/donate"],
+      ["CONTACT", "/contact"],
+    ] as const;
+
+    links.forEach(([name, href]) => {
+      expect(screen.getByRole("link", { name }).getAttribute("href")).toBe(href);
+    });
   });
 });
