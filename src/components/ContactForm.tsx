@@ -5,13 +5,36 @@ import styles from "../app/contact/contact.module.css";
 
 export default function ContactForm() {
   const [success, setSuccess] = useState(false);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
+
   const handleSubmit = () => {
-    setSuccess(true);
-    console.log("Form submitted perfectly!");
+    setSuccess(false);
+    setNameError("");
+    setEmailError("");
+    setMessageError("");
+
+    let isValid = true;
+
+    //check name
+    if (name.trim() === "") {
+      setNameError("Name is required.");
+      isValid = false;
+    }
+
+    if (isValid) {
+      setSuccess(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      console.log("Validation passed successfully!");
+    }
   };
 
   return (
@@ -47,6 +70,9 @@ export default function ContactForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          {nameError && (
+            <span className={styles.errorMessage}>{nameError}</span>
+          )}
         </div>
 
         {/* Email field */}
@@ -59,6 +85,9 @@ export default function ContactForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {emailError && (
+            <span className={styles.errorMessage}>{emailError}</span>
+          )}
         </div>
       </div>
 
@@ -71,6 +100,9 @@ export default function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
+        {messageError && (
+          <span className={styles.errorMessage}>{messageError}</span>
+        )}
       </div>
 
       {/* Submit button */}
