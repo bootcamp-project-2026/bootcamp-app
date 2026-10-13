@@ -7,6 +7,7 @@ export default function ContactForm() {
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = () => {
     setSuccess(true);
@@ -56,9 +57,7 @@ export default function ContactForm() {
             id="email"
             className={styles.inputField}
             value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </div>
@@ -66,7 +65,12 @@ export default function ContactForm() {
       {/* Message field */}
       <div id="message-container" className={styles.messageContainer}>
         <label htmlFor="message">Message:</label>
-        <textarea id="message" className={styles.textareaField}></textarea>
+        <textarea
+          id="message"
+          className={styles.textareaField}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
       </div>
 
       {/* Submit button */}
