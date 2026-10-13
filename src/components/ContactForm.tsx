@@ -1,0 +1,128 @@
+"use client";
+
+import React, { useState } from "react";
+import styles from "../app/contact/contact.module.css";
+
+export default function ContactForm() {
+  const [success, setSuccess] = useState(false);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
+
+  const handleSubmit = () => {
+    setSuccess(false);
+    setNameError("");
+    setEmailError("");
+    setMessageError("");
+
+    let isValid = true;
+
+    //check name
+    if (name.trim() === "") {
+      setNameError("Name is required.");
+      isValid = false;
+    }
+
+    //check email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.trim() === "") {
+      setEmailError("Email is required.");
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address.");
+      isValid = false;
+    }
+
+    // check message
+    if (message.trim() === "") {
+      setMessageError("Message is required.");
+      isValid = false;
+    }
+
+    if (isValid) {
+      setSuccess(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      console.log("Validation passed successfully!");
+    }
+  };
+
+  return (
+    <form
+      id="contact-form"
+      className={styles.contactForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
+      {success && (
+        <p
+          style={{
+            color: "green",
+            textAlign: "center",
+            fontWeight: "bold",
+            marginBottom: "1rem",
+          }}
+        >
+          {"Thank you! We'll get back to you soon."}{" "}
+        </p>
+      )}
+
+      <div id="personal-contact-info" className={styles.personalContactInfo}>
+        {/* Name field */}
+        <div id="name-container" className={styles.nameContainer}>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            className={styles.inputField}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          {nameError && (
+            <span className={styles.errorMessage}>{nameError}</span>
+          )}
+        </div>
+
+        {/* Email field */}
+        <div id="email-container" className={styles.emailContainer}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            className={styles.inputField}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {emailError && (
+            <span className={styles.errorMessage}>{emailError}</span>
+          )}
+        </div>
+      </div>
+
+      {/* Message field */}
+      <div id="message-container" className={styles.messageContainer}>
+        <label htmlFor="message">Message:</label>
+        <textarea
+          id="message"
+          className={styles.textareaField}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
+        {messageError && (
+          <span className={styles.errorMessage}>{messageError}</span>
+        )}
+      </div>
+
+      {/* Submit button */}
+      <input type="submit" className={styles.submitButton} />
+    </form>
+  );
+}
