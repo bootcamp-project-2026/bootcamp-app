@@ -6,6 +6,8 @@ import styles from "../app/contact/contact.module.css";
 export default function ContactForm() {
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
   const handleSubmit = () => {
     setSuccess(true);
     console.log("Form submitted perfectly!");
@@ -49,7 +51,15 @@ export default function ContactForm() {
         {/* Email field */}
         <div id="email-container" className={styles.emailContainer}>
           <label htmlFor="email">Email:</label>
-          <input type="text" id="email" className={styles.inputField} />
+          <input
+            type="text"
+            id="email"
+            className={styles.inputField}
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
+          />
         </div>
       </div>
 
