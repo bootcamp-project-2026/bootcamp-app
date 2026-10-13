@@ -4,8 +4,19 @@ import React, { useState } from "react";
 import styles from "../app/contact/contact.module.css";
 
 export default function ContactForm() {
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = () => {
+    setSuccess(true);
+    console.log("Form submitted perfectly!");
+  };
+
   return (
-    <form id="contact-form" className={styles.contactForm}>
+    <form
+      id="contact-form"
+      className={styles.contactForm}
+      onSubmit={handleSubmit}
+    >
       <div id="personal-contact-info" className={styles.personalContactInfo}>
         {/* Name field */}
         <div id="name-container" className={styles.nameContainer}>
