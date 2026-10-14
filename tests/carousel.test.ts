@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 import { createElement } from "react";
 import { cleanup, render, screen } from "@testing-library/react";
 import CanineCarousel from "../src/components/CanineCarousel";
-import type { Canine } from "../src/database/canineSchema";
+import { type Canine } from "../src/database/canineSchema";
 
 const embla = vi.hoisted(() => ({
   canScrollPrev: () => false,
@@ -30,6 +30,7 @@ function makeCanine(overrides: Partial<Canine> = {}): Canine {
     Weight: 15,
     Details: [],
     Story: "Ziggy loves naps in the sun.",
+    AdoptionLink: "/adopt",
     ...overrides,
   };
 }

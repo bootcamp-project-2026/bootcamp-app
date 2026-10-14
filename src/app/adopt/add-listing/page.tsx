@@ -30,6 +30,7 @@ export default function AddListingPage() {
     Weight: "",
     Details: "",
     Story: "",
+    AdoptionLink: "",
   });
 
   // the file a user uploaded stays in the browser until submit, then it gets
@@ -198,6 +199,17 @@ export default function AddListingPage() {
             type="number"
             name="Weight"
             value={form.Weight}
+            onChange={handleChange}
+          />
+        </label>
+
+        {/* Adoption link field */}
+        <label className={formStyles.label}>
+          Adoption link (optional)
+          <input
+            type="url"
+            name="AdoptionLink"
+            value={form.AdoptionLink}
             onChange={handleChange}
           />
         </label>
